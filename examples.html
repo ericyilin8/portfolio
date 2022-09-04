@@ -43,8 +43,18 @@
             The web app keeps track of student reading progress on assigned books.
           </span>
         </div>
-        <div class="col">
-          <iframe src="https://bookbuster2.herokuapp.com/"></iframe>
+        <div class="col position-relative">
+          <div id="iFramePlaceholder" class="d-flex justify-content-center align-items-center position-absolute">
+            <div class="d-flex flex-column align-items-center">
+              <div class="loader m-0"></div>
+              <div>
+                <span class="fs-4" style="color: #3498db;">LOADING</span>
+              </div>
+            </div>
+          </div>
+          <div id="bookbuster">
+            <iframe class="invisible" src="https://bookbuster2.herokuapp.com/"></iframe>
+          </div>
         </div>
       </div>
       <div class="row">
@@ -69,16 +79,11 @@
                           <template v-for="header in headers" #[`item.${header.value}`]="props">
                               <v-edit-dialog
                               :return-value.sync="props.item[header.value]"
-                              @save="save"
-                              @cancel="cancel"
-                              @open="open"
-                              @close="close"
                             >
                               {{ props.item[header.value] }}
                               <template v-slot:input>
                                 <v-text-field
                                   v-model="props.item[header.value]"
-                                  :rules="[max25chars]"
                                   label="Edit"
                                   single-line
                                   counter
@@ -110,6 +115,15 @@
         vuetify: new Vuetify(),
         data: data
     })
+    </script>
+
+    <script>
+      const iframe = document.querySelector("iframe");
+      const placeholder = document.querySelector("#iFramePlaceholder");
+      iframe.addEventListener("load", function (evt) {
+        placeholder.className = "d-none";
+        iframe.className="visible";
+      })
     </script>
 </body>
 </html>

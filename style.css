@@ -1,0 +1,56 @@
+@font-face{
+    font-family: 'Roboto';
+    src: url('Roboto/Roboto-Regular.ttf');
+}
+
+.roboto {
+    font-family: 'Roboto';
+}
+
+bouncing img {
+    height: 200px;
+    width: 200px;
+    margin: 8px;
+    z-index: -1;
+    opacity: 0.8;
+    object-fit: contain;
+}
+
+body {
+    overflow: hidden;
+}
+
+h1 {
+    font-size: 4rem;
+}
+
+.social-links {
+    align-items: flex-start;
+    display: flex;
+}
+
+.social-links * {
+    height: 40px;
+    margin: 0 8px;
+    text-decoration: none;
+}
+
+#resume-button {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    background: black;
+    color:white;
+    padding: 0 8px;
+    border-radius: 2px;
+}
+
+@media only screen and (max-width: 600px) {
+    bouncing img {
+        height: 100px;
+        width: 100px;
+    }
+    h1 {
+        font-size: 2rem;
+    }
+}

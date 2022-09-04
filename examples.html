@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="vuetifyv2.6.9.min.css" rel="stylesheet">
+    <link href="bootstrapv5.2.0.css" rel="stylesheet">
+    <script src="bootstrapv5.2.0.js"></script>
+    <script src="vuev2.7.10.js"></script>
+    <script src="vuetifyv2.6.9.js"></script>
+    <title>Eric Lin Portfolio</title>
+
+    <link href="common.css" rel="stylesheet">
+    <link href="examples.css" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="index.html">Eric Lin</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                <a class="nav-link" aria-current="page" href="index.html">Home</a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link active" href="examples.html">Samples</a>
+                </li>
+            </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid">
+      <div class="row">
+        <project-title>#BookBuster</project-title>
+        <div class="col d-flex align-items-center">
+          <span class="fs-4">
+            This group project was made using MongoDB, Express, React, and Node.js. I was responsible for the student page, the book viewer, and the Google authentication.
+            The web app keeps track of student reading progress on assigned books.
+          </span>
+        </div>
+        <div class="col">
+          <iframe src="https://bookbuster2.herokuapp.com/"></iframe>
+        </div>
+      </div>
+      <div class="row">
+        <project-title>#v-data-table</project-title>
+        <div class="col d-flex align-items-center">
+          <span class="fs-4">
+            This simple Vue data table dynamically generates editable fields using v-for and dynamically named slots.
+            Click on a field to edit it, and hit enter to save it.
+          </span>
+        </div>
+        <div class="col">
+          <div id="app">
+              <v-app>
+                <v-main>
+                  <v-container>
+                      <v-data-table
+                          :headers="headers"
+                          :items="items"
+                          :items-per-page="5"
+                          class="elevation-1"
+                      >
+                          <template v-for="header in headers" #[`item.${header.value}`]="props">
+                              <v-edit-dialog
+                              :return-value.sync="props.item[header.value]"
+                              @save="save"
+                              @cancel="cancel"
+                              @open="open"
+                              @close="close"
+                            >
+                              {{ props.item[header.value] }}
+                              <template v-slot:input>
+                                <v-text-field
+                                  v-model="props.item[header.value]"
+                                  :rules="[max25chars]"
+                                  label="Edit"
+                                  single-line
+                                  counter
+                                ></v-text-field>
+                              </template>
+                            </v-edit-dialog>
+                          </template>
+                      </v-data-table>
+                  </v-container>
+                </v-main>
+              </v-app>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+    let data = {
+        headers: [{text:'Name', value:'name'}, {text:'Address', value:'address'}, {text: 'Phone', value: 'phone'}],
+        items: [
+          {name:'Henry', address: '111 Oak Tree Rd.', phone: '853-221-4931'},
+          {name:'Ben', address: '112 Oak Tree Rd.', phone: '853-220-4941'},
+          {name:'Martha', address: '113 Oak Tree Rd.', phone: '853-281-7631'}
+        ]
+    }
+
+    new Vue({
+        el: '#app',
+        vuetify: new Vuetify(),
+        data: data
+    })
+    </script>
+</body>
+</html>

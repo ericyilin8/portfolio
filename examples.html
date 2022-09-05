@@ -37,13 +37,13 @@
     <div class="container-fluid">
       <div class="row">
         <project-title>#BookBuster</project-title>
-        <div class="col d-flex align-items-center">
+        <div class="col-sm-12 col-md-6 d-flex align-items-center">
           <span class="fs-4">
             This group project was made using MongoDB, Express, React, and Node.js. I was responsible for the student page, the book viewer, and the Google authentication.
             The web app keeps track of student reading progress on assigned books.
           </span>
         </div>
-        <div class="col position-relative">
+        <div class="col-sm-12 col-md-6 position-relative">
           <div id="iFramePlaceholder" class="d-flex justify-content-center align-items-center position-absolute">
             <div class="d-flex flex-column align-items-center">
               <div class="loader m-0"></div>
@@ -55,17 +55,25 @@
           <div id="bookbuster">
             <iframe class="invisible" src="https://bookbuster2.herokuapp.com/"></iframe>
           </div>
+          <div id="bookbusterLinks">
+            <a href="https://bookbuster2.herokuapp.com/">
+              <img src="bookbuster_logo.png">
+            </a>
+            <a href="https://github.com/MacyCorbin/Student-Reading">
+              <img src="github_logo.png">
+            </a>
+          </div>
         </div>
       </div>
       <div class="row">
         <project-title>#v-data-table</project-title>
-        <div class="col d-flex align-items-center">
+        <div class="col-sm-12 col-md-6 d-flex align-items-center">
           <span class="fs-4">
             This simple Vue data table dynamically generates editable fields using v-for and dynamically named slots.
             Click on a field to edit it, and hit enter to save it.
           </span>
         </div>
-        <div class="col">
+        <div class="col-sm-12 col-md-6">
           <div id="app">
               <v-app>
                 <v-main>

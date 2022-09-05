@@ -1,9 +1,3 @@
-.project-row {
-    margin: 8px 24px;
-    border: 1px dashed black;
-    border-radius: 8px;
-}
-
 .v-application--wrap {
     min-height: 0!important;
 }
@@ -64,15 +58,10 @@ height:540px;
     #iFramePlaceholder {
         display: none !important;
     }
-
-}
-
-@media screen and (min-width: 1200px)
-{
-    .row {
+    .project-row {
         margin: 8px 24px;
         border: 1px dashed black;
         border-radius: 8px;
     }
-    
+
 }

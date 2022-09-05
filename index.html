@@ -95,14 +95,23 @@
         function step(img) {
             const newLeft = parseInt(img.style.left) + img.leftVelocity;
             const newTop = parseInt(img.style.top) + img.topVelocity;
-
-            if(newLeft < 0 || newLeft > screen.width - img.width - 10)
+            const absLeftVelocity = Math.abs(img.leftVelocity);
+            const absTopVelocity = Math.abs(img.topVelocity);
+            if(newLeft < 0) 
             {
-                img.leftVelocity = -img.leftVelocity;
+              img.leftVelocity = absLeftVelocity;
             }
-            if(newTop < 0 || newTop > screen.height - img.height - 10)
+            if(newLeft > screen.width - img.width )
             {
-                img.topVelocity = -img.topVelocity;
+              img.leftVelocity = -1*absLeftVelocity;
+            }
+            if(newTop < 0)
+            {
+              img.topVelocity = absTopVelocity;
+            }
+            if(newTop > screen.height - img.height)
+            {
+              img.topVelocity = -1*absTopVelocity;
             }
             
             img.style.left = newLeft + 'px';

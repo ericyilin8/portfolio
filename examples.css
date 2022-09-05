@@ -1,4 +1,4 @@
-.row {
+.project-row {
     margin: 8px 24px;
     border: 1px dashed black;
     border-radius: 8px;
@@ -65,4 +65,14 @@ height:540px;
         display: none !important;
     }
 
+}
+
+@media screen and (min-width: 1200px)
+{
+    .row {
+        margin: 8px 24px;
+        border: 1px dashed black;
+        border-radius: 8px;
+    }
+    
 }

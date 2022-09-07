@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eric Lin Portfolio</title>
+    <link href="vuetifyv2.6.9.min.css" rel="stylesheet">
+    <link href="bootstrapv5.2.0.css" rel="stylesheet">
+    <script src="bootstrapv5.2.0.js"></script>
+    <script src="vuev2.7.10.js"></script>
+    <script src="vuetifyv2.6.9.js"></script>
+
+    <link href="style.css" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg bg-light">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="index.html">Eric Lin</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="index.html">Portfolio</a>
+              </li>
+          </div>
+        </div>
+    </nav>
+
+    <main class="container">
+      <div class="row">
+          <div class="roboto col-md-6 col-sm-12">
+              <h1>Junior Web Developer with experience in frontend frameworks, cloud services, REST API, and more</h1>
+              <br>
+              <br>
+              <h5>Certified by the Georgia Tech Web Development Bootcamp</h5>
+          </div>
+      </div>
+      <div class="row mt-5">
+          <div class="col-md-6 col-sm-12 social-links">
+              <a href="https://drive.google.com/file/d/17yF-xfWdAM0PHd15U9c7IuvL1Z97F6XX/view?usp=sharing" target="_blank">
+                  <div id="resume-button" class="roboto">RESUME</div>
+              </a>
+              <a href="https://www.linkedin.com/in/eric-lin-50779b178/" target="_blank"><img src="linkedin_logo.png"></a>
+              <a href="https://github.com/ericyilin8" target="_blank"><img src="github_logo.png"></a>
+          </div>
+      </div>
+      <bouncing>
+          <img src="Technologies/vuetify_logo.png">
+          <img src="Technologies/React_logo_logotype_emblem.png">
+          <img src="Technologies/logo-git-icon-1024x1024.png">
+          <img src="Technologies/mysql_logo.png">
+          <img src="Technologies/aws_logo_smile_1200x630.png">
+          <img src="Technologies/mongodb_logo.png">
+          <img src="Technologies/php_logo.png">
+          <img src="Technologies/node_logo.png">
+          <img src="Technologies/html5_logo.png">
+          <img src="Technologies/css3_logo.png">
+          <img src="Technologies/angularjs_logo.png">
+          <img src="Technologies/jquery_logo.png">
+          <img src="Technologies/bootstrap_logo.png">
+          <img src="Technologies/vue_logo.png">
+          <img src="Technologies/github_logo.png">
+          <img src="Technologies/jira_logo.png">
+          <img src="Technologies/bitbucket_logo.png">
+          <img src="Technologies/linux_logo.png">
+          <img src="Technologies/buzz_logo.png">
+          <img src="Technologies/es6_logo.png">
+      </bouncing>
+
+      <div class="row project-row mt-5">
+        <project-title>#BookBuster</project-title>
+        <div class="col-sm-12 col-md-6">
+          <div class="row">
+            <div class="col">
+              <span class="fs-4">
+                This group project was made using MongoDB, Express, React, and Node.js. I was responsible for the student page, the book viewer, and the Google authentication.
+                The web app keeps track of student reading progress on assigned books.
+              </span>
+            </div>
+          </div>
+          <div class="row">
+            <div id="bookbusterLinks" class="col">
+              <a href="https://bookbuster2.herokuapp.com/">
+                <img src="bookbuster_logo.png">
+              </a>
+              <a href="https://github.com/MacyCorbin/Student-Reading">
+                <img src="github_logo.png">
+              </a>
+            </div>
+          </div>
+
+        </div>
+        <div class="col-sm-12 col-md-6 position-relative">
+          <div id="iFramePlaceholder" class="d-flex justify-content-center align-items-center position-absolute">
+            <div class="d-flex flex-column align-items-center">
+              <div class="loader m-0"></div>
+              <div>
+                <span class="fs-5" style="color: black;">LOADING</span>
+              </div>
+            </div>
+          </div>
+          <div id="bookbuster">
+            <iframe class="invisible" src="https://bookbuster2.herokuapp.com/"></iframe>
+          </div>
+        </div>
+      </div>
+      <div class="row project-row">
+        <project-title>#v-data-table</project-title>
+        <div class="col-sm-12 col-md-6">
+          <div class="row">
+            <div class="col">
+              <span class="fs-4">
+                This simple Vue data table dynamically generates editable fields using v-for and dynamically named slots.
+                Click on a field to edit it, and hit enter to save it.
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-12 col-md-6">
+          <div id="app">
+              <v-app>
+                <v-main>
+                  <v-container>
+                      <v-data-table
+                          :headers="headers"
+                          :items="items"
+                          :items-per-page="5"
+                          class="elevation-1"
+                      >
+                          <template v-for="header in headers" #[`item.${header.value}`]="props">
+                              <v-edit-dialog
+                              :return-value.sync="props.item[header.value]"
+                            >
+                              {{ props.item[header.value] }}
+                              <template v-slot:input>
+                                <v-text-field
+                                  v-model="props.item[header.value]"
+                                  label="Edit"
+                                  single-line
+                                  counter
+                                ></v-text-field>
+                              </template>
+                            </v-edit-dialog>
+                          </template>
+                      </v-data-table>
+                  </v-container>
+                </v-main>
+              </v-app>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script>
+      let imgs = document.querySelectorAll('bouncing img');
+      for(img of imgs)
+      {
+          img.style.position = 'absolute';
+          img.style.left = Math.floor( Math.random()*(screen.width-img.width-10) )  + 'px';
+          img.style.top = Math.floor( Math.random()*(screen.height-img.height-10) ) + 'px';
+          
+          const leftNegative = Math.random() < 0.5 ? -1 : 1;
+          const topNegative = Math.random() < 0.5 ? -1 : 1;
+          img.leftVelocity = leftNegative*( Math.floor( Math.random()*2+1 ) );
+          img.topVelocity = topNegative*( Math.floor( Math.random()*2+1 ) );
+      }
+
+
+      setInterval(() => {
+          for(img of imgs) step(img);
+      }, 15)
+
+      function step(img) {
+          const newLeft = parseInt(img.style.left) + img.leftVelocity;
+          const newTop = parseInt(img.style.top) + img.topVelocity;
+          const absLeftVelocity = Math.abs(img.leftVelocity);
+          const absTopVelocity = Math.abs(img.topVelocity);
+          if(newLeft < 0) 
+          {
+            img.leftVelocity = absLeftVelocity;
+          }
+          if(newLeft > document.body.clientWidth - img.width )
+          {
+            img.leftVelocity = -1*absLeftVelocity;
+          }
+          if(newTop < 0)
+          {
+            img.topVelocity = absTopVelocity;
+          }
+          if(newTop > document.body.clientHeight - img.height)
+          {
+            img.topVelocity = -1*absTopVelocity;
+          }
+          
+          img.style.left = newLeft + 'px';
+          img.style.top = newTop + 'px';
+      }
+    </script>
+
+    <script>
+      let data = {
+          headers: [{text:'Name', value:'name'}, {text:'Address', value:'address'}, {text: 'Phone', value: 'phone'}],
+          items: [
+            {name:'Henry', address: '111 Oak Tree Rd.', phone: '853-221-4931'},
+            {name:'Ben', address: '112 Oak Tree Rd.', phone: '853-220-4941'},
+            {name:'Martha', address: '113 Oak Tree Rd.', phone: '853-281-7631'}
+          ]
+      }
+  
+      new Vue({
+          el: '#app',
+          vuetify: new Vuetify(),
+          data: data
+      })
+      </script>
+
+    <script>
+      const iframe = document.querySelector("iframe");
+      const placeholder = document.querySelector("#iFramePlaceholder");
+      iframe.addEventListener("load", function (evt) {
+        placeholder.className = "d-none";
+        iframe.className="visible";
+      })
+    </script>
+</body>
+</html>
